@@ -1,0 +1,44 @@
+<svg width="240" height="240" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="pcHalo" cx="50%" cy="50%" r="50%">
+      <stop offset="56%" stop-color="#FFD23A" stop-opacity="0"/>
+      <stop offset="82%" stop-color="#FFD23A" stop-opacity="0.9"/>
+      <stop offset="93%" stop-color="#FF9E12" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#FF9E12" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="pcGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="pcSoft" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+
+  <!-- Neon halo -->
+  <circle cx="120" cy="120" r="108" fill="url(#pcHalo)" filter="url(#pcSoft)" opacity="0.9"/>
+
+  <!-- Faceted hexagonal 3D gem (flat-top hexagon, lit from top-left) -->
+  <g stroke="#7A4E00" stroke-width="1" stroke-linejoin="round">
+    <!-- ring facets, outer hex r=86 → inner table hex r=34 -->
+    <polygon points="206,120 154,120 137,149.4 163,194.5" fill="#D69A12"/>   <!-- right -->
+    <polygon points="163,194.5 137,149.4 103,149.4 77,194.5" fill="#A8740A"/> <!-- bottom -->
+    <polygon points="77,194.5 103,149.4 86,120 34,120" fill="#C68A10"/>       <!-- bottom-left -->
+    <polygon points="34,120 86,120 103,90.6 77,45.5" fill="#F2C84A"/>         <!-- upper-left -->
+    <polygon points="77,45.5 103,90.6 137,90.6 163,45.5" fill="#FFDD66"/>     <!-- top -->
+    <polygon points="163,45.5 137,90.6 154,120 206,120" fill="#EFC23C"/>      <!-- upper-right -->
+    <!-- table (top face) -->
+    <polygon points="154,120 137,90.6 103,90.6 86,120 103,149.4 137,149.4" fill="#FFE98A"/>
+  </g>
+
+  <!-- Bright neon rim -->
+  <polygon points="120,34 206,120 120,206 34,120"
+           fill="none" stroke="#FFE066" stroke-width="0" opacity="0"/>
+  <polygon points="206,120 163,194.5 77,194.5 34,120 77,45.5 163,45.5"
+           fill="none" stroke="#FFEE9A" stroke-width="2.5" stroke-linejoin="round"
+           opacity="0.95" filter="url(#pcGlow)"/>
+
+  <!-- Specular sparkle on the table -->
+  <circle cx="104" cy="104" r="6" fill="#FFFFFF" opacity="0.85"/>
+  <path d="M104 94 l3 10 -3 10 -3 -10 z" fill="#FFFFFF" opacity="0.5"/>
+</svg>
