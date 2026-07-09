@@ -1,0 +1,96 @@
+<svg width="240" height="240" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Warm oat/nut sphere body -->
+    <radialGradient id="ball" cx="38%" cy="30%" r="78%">
+      <stop offset="0%"  stop-color="#F6D08A"/>
+      <stop offset="32%" stop-color="#D79B4E"/>
+      <stop offset="62%" stop-color="#9E5C28"/>
+      <stop offset="88%" stop-color="#5E3214"/>
+      <stop offset="100%" stop-color="#3A1C0B"/>
+    </radialGradient>
+    <!-- Neon halo ring (arcade-noir signature) -->
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+      <stop offset="58%" stop-color="#FFB03A" stop-opacity="0"/>
+      <stop offset="82%" stop-color="#FFB03A" stop-opacity="0.95"/>
+      <stop offset="93%" stop-color="#FF7A1A" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#FF7A1A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rimAmber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFE08A"/>
+      <stop offset="100%" stop-color="#FF9A2E"/>
+    </linearGradient>
+    <linearGradient id="rimCyan" x1="1" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#36E6FF"/>
+      <stop offset="100%" stop-color="#36E6FF" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+    <clipPath id="ballClip"><circle cx="120" cy="120" r="88"/></clipPath>
+  </defs>
+
+  <!-- Neon halo behind the ball -->
+  <circle cx="120" cy="120" r="112" fill="url(#halo)" filter="url(#softGlow)" opacity="0.9"/>
+  <circle cx="120" cy="120" r="103" fill="none" stroke="url(#rimAmber)" stroke-width="3"
+          opacity="0.85" filter="url(#glow)"/>
+  <circle cx="120" cy="120" r="103" fill="none" stroke="url(#rimCyan)" stroke-width="2.5"
+          stroke-dasharray="42 230" stroke-linecap="round" opacity="0.9" filter="url(#glow)"
+          transform="rotate(35 120 120)"/>
+
+  <!-- Sphere body -->
+  <circle cx="120" cy="120" r="88" fill="url(#ball)"/>
+
+  <!-- Embedded oats / seeds / nuts / chips, clipped to the sphere -->
+  <g clip-path="url(#ballClip)">
+    <!-- oat flakes (light) -->
+    <g fill="#F3D49A" opacity="0.92">
+      <ellipse cx="86"  cy="72"  rx="14" ry="7.5" transform="rotate(-22 86 72)"/>
+      <ellipse cx="146" cy="86"  rx="12" ry="6.5" transform="rotate(18 146 86)"/>
+      <ellipse cx="72"  cy="146" rx="13" ry="7"   transform="rotate(36 72 146)"/>
+      <ellipse cx="170" cy="146" rx="11" ry="6.5" transform="rotate(-30 170 146)"/>
+      <ellipse cx="114" cy="176" rx="13" ry="6.5" transform="rotate(8 114 176)"/>
+      <ellipse cx="122" cy="112" rx="10" ry="5.5" transform="rotate(-12 122 112)"/>
+    </g>
+    <!-- nut chunks (amber) -->
+    <g fill="#C98032">
+      <path d="M94 98 l17 -4 7 14 -12 11 -14 -7 z"/>
+      <path d="M152 118 l15 2 1 15 -14 6 -8 -13 z"/>
+      <path d="M80  120 l13 3 -1 14 -14 2 -3 -13 z"/>
+      <path d="M126 148 l16 0 3 13 -13 9 -11 -10 z"/>
+    </g>
+    <!-- seeds (dark slivers) -->
+    <g fill="#3A220F">
+      <ellipse cx="104" cy="86"  rx="4.5" ry="2.2" transform="rotate(40 104 86)"/>
+      <ellipse cx="142" cy="104" rx="5" ry="2.2" transform="rotate(-20 142 104)"/>
+      <ellipse cx="90"  cy="134" rx="4.5" ry="2.2" transform="rotate(70 90 134)"/>
+      <ellipse cx="160" cy="132" rx="4.5" ry="2.2" transform="rotate(20 160 132)"/>
+      <ellipse cx="118" cy="160" rx="5" ry="2.2" transform="rotate(-50 118 160)"/>
+      <ellipse cx="134" cy="128" rx="4.5" ry="2.2" transform="rotate(15 134 128)"/>
+      <ellipse cx="100" cy="158" rx="4" ry="2" transform="rotate(-30 100 158)"/>
+    </g>
+    <!-- chocolate / dark chips -->
+    <g fill="#2A160A">
+      <circle cx="130" cy="96"  r="6.5"/>
+      <circle cx="82"  cy="104" r="5.5"/>
+      <circle cx="166" cy="110" r="6"/>
+      <circle cx="148" cy="162" r="6.5"/>
+      <circle cx="104" cy="178" r="5.5"/>
+    </g>
+    <!-- inner shading toward bottom-right for volume -->
+    <ellipse cx="154" cy="166" rx="78" ry="66" fill="#2A1409" opacity="0.45"/>
+  </g>
+
+  <!-- Neon rim-light on the sphere edge -->
+  <path d="M56 90 A88 88 0 0 1 144 42" fill="none" stroke="url(#rimAmber)"
+        stroke-width="5.5" stroke-linecap="round" opacity="0.9" filter="url(#glow)"/>
+  <path d="M184 164 A88 88 0 0 1 124 208" fill="none" stroke="url(#rimCyan)"
+        stroke-width="4" stroke-linecap="round" opacity="0.85" filter="url(#glow)"/>
+
+  <!-- Specular highlight -->
+  <ellipse cx="90" cy="82" rx="22" ry="14" fill="#FFF4D6" opacity="0.55" transform="rotate(-28 90 82)"/>
+  <circle cx="82" cy="76" r="5.5" fill="#FFFFFF" opacity="0.8"/>
+</svg>
