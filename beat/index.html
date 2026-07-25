@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YOU'VE BEEN DARED &mdash; 10 SECOND HERO</title>
+<meta name="description" content="Someone dares you to beat their 10-second record. Real push-ups. Real reps. 10 seconds is all it takes.">
+<meta name="theme-color" content="#0a0710">
+<link rel="icon" type="image/png" href="../assets/appicon.png">
+<link rel="apple-touch-icon" href="../assets/appicon.png">
+<meta property="og:title" content="YOU'VE BEEN DARED &mdash; 10 SECOND HERO">
+<meta property="og:description" content="Beat their 10-second record or keep scrolling, couch potato.">
+<meta property="og:image" content="https://10secondhero.com.au/assets/appicon.png">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --black:#0a0710; --bgTop:#120d2e; --bgBottom:#24124d;
+    --cyan:#33f2ff; --pink:#ff40a6; --gold:#ffc733; --danger:#ff5260;
+    --protein:#73f28c; --ink:#f4f1ff; --muted:#a99fce;
+    --rounded:ui-rounded,"SF Pro Rounded",system-ui,Avenir,"Segoe UI",sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:linear-gradient(180deg, var(--bgBottom) 0%, var(--bgTop) 30%, var(--black) 100%);
+    background-attachment:fixed;
+    color:var(--ink); font-family:var(--rounded); -webkit-font-smoothing:antialiased;
+    min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px;
+  }
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;
+    background:repeating-linear-gradient(to bottom, rgba(255,255,255,.045) 0 1px, transparent 1px 3px);
+    mix-blend-mode:overlay;}
+  .card{max-width:420px;width:100%;text-align:center;padding:36px 24px;
+    border:2px solid rgba(255,199,51,.5); border-radius:20px;
+    background:rgba(10,7,16,.6); backdrop-filter:blur(6px);
+    box-shadow:0 0 40px rgba(255,199,51,.15);}
+  .banner{font-family:var(--mono);font-size:11px;font-weight:800;letter-spacing:.18em;
+    color:var(--gold);text-shadow:0 0 12px rgba(255,199,51,.8);margin-bottom:14px}
+  .icon{width:84px;height:84px;border-radius:19px;margin:0 auto 14px;display:block;
+    box-shadow:0 0 26px rgba(51,242,255,.35)}
+  h1{font-size:26px;font-weight:900;line-height:1.15;margin-bottom:6px}
+  h1 em{font-style:normal;color:var(--pink);text-shadow:0 0 16px rgba(255,64,166,.8)}
+  .number{font-size:88px;font-weight:900;font-style:italic;color:var(--protein);
+    text-shadow:-3px 1px 0 rgba(255,64,166,.5), 3px -1px 0 rgba(51,242,255,.5), 0 0 34px rgba(115,242,140,.7);
+    line-height:1;margin:10px 0 2px}
+  .label{font-family:var(--mono);font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--ink);opacity:.85}
+  .taunt{font-size:14px;font-weight:700;font-style:italic;color:var(--muted);margin:16px 8px 22px}
+  .btn{display:block;width:100%;padding:15px 12px;margin:10px 0;border-radius:14px;
+    font-family:var(--rounded);font-size:16px;font-weight:900;text-decoration:none;color:#0a0710;
+    background:linear-gradient(180deg,#ffe066,var(--gold));
+    box-shadow:0 0 22px rgba(255,199,51,.5);}
+  .btn.ghost{background:transparent;color:var(--cyan);border:2px solid var(--cyan);
+    box-shadow:0 0 14px rgba(51,242,255,.3);}
+  .fine{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--muted);margin-top:14px}
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="banner">&#9733; CHALLENGER WANTED &#9733;</div>
+    <img class="icon" src="../assets/appicon.png" alt="10 Second Hero">
+    <h1 id="headline"><em>SOMEONE</em> DARES YOU</h1>
+    <div class="number" id="target">10</div>
+    <div class="label" id="label">REPS IN 10 SECONDS. BEAT IT.</div>
+    <p class="taunt" id="taunt">"Beat me. Or keep scrolling, couch potato." &#129364;</p>
+    <a class="btn" href="https://apps.apple.com/app/id6788653903" id="store">GET 10 SECOND HERO &mdash; FREE</a>
+    <a class="btn ghost" href="#" id="openapp">I HAVE THE APP &mdash; ACCEPT THE DARE</a>
+    <div class="fine">REAL PUSH-UPS &middot; REAL SENSORS &middot; NO PAY-TO-WIN, EVER</div>
+  </main>
+<script>
+  // The dare arrives as /beat/?n=14&by=MAX - render it and wire the deep link.
+  var q = new URLSearchParams(location.search);
+  var n = parseInt(q.get('n'), 10);
+  var by = (q.get('by') || '').slice(0, 20).trim();
+  var safe = function(s){ var d = document.createElement('div'); d.textContent = s; return d.innerHTML; };
+  if (!isNaN(n) && n > 0 && n <= 200) {
+    document.getElementById('target').textContent = n;
+  } else { n = null; }
+  if (by) {
+    document.getElementById('headline').innerHTML = '<em>' + safe(by.toUpperCase()) + '</em> DARES YOU';
+    document.getElementById('taunt').textContent =
+      '"' + by.toUpperCase() + ' did it in 10 seconds. Your move." ';
+  }
+  document.getElementById('openapp').href =
+    'tensecondhero://beat?n=' + (n || 10) + '&by=' + encodeURIComponent(by);
+</script>
+</body>
+</html>
